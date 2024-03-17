@@ -1,20 +1,13 @@
 window.onload = function () {
 
-
     const squareContainer = document.getElementById('container');
     const btn = document.getElementById('newGridBtn');
     const gridWidth = 1100
+    const btnReset = document.getElementById('reset');
+    let squareDiv = document.querySelectorAll('#square');
 
-    for (let i = 0; i < 256; i++) {
-        const div = document.createElement('div');
-        div.setAttribute('id', 'square');
-        div.style.cssText = 'border-style: solid; border-width: 3px; width: 50px; height: 50px; margin: 5px;'
-        squareContainer.appendChild(div);
-        
-    }
 
     function createNewGrid(num) {
-     
         while (squareContainer.lastElementChild) {
             squareContainer.removeChild(squareContainer.lastElementChild);
         }
@@ -27,22 +20,33 @@ window.onload = function () {
             div.style.outline = '5px solid red';
             squareContainer.appendChild(div);  
         }
-        
         squareDiv = document.querySelectorAll('#square');
         squareDiv.forEach(squareDiv => squareDiv.addEventListener('mouseover', () => {
             squareDiv.style.backgroundColor = 'black';
         }));
     }
 
-    let squareDiv = document.querySelectorAll('#square');
+    function resetSquares() {
+        squareDiv.forEach(squareDiv => {
+            squareDiv.style.backgroundColor = 'blue';
+        });        
+    }
 
     btn.addEventListener('click', () => {
-        createNewGrid(parseInt(prompt('Enter a number')));
+        let input = parseInt(prompt('Enter a number'));
+        if (input < 50) {
+            createNewGrid(input);
+        } else {
+            alert('Number is higher than 50, please try again');
+        }
+        
     });
 
-    squareDiv.forEach(squareDiv => squareDiv.addEventListener('mouseover', () => {
-        squareDiv.style.backgroundColor = 'black';
-    }));
+    btnReset.addEventListener('click', () => {
+        resetSquares();
+    });
+
+    createNewGrid(16);
 
 
    
