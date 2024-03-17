@@ -10,15 +10,28 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    background-color: lightblue;
 }
 
 #header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 #btnContainer {
     display: flex;
     gap: 10px;
+}
+
+#newGridBtn, #reset {
+    border-radius: 3px;
+    background-color: lightcyan;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+#newGridBtn:hover, #reset:hover {
+    background-color: cyan;
 }

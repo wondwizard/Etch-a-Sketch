@@ -16,8 +16,8 @@ window.onload = function () {
             div.setAttribute('id', 'square');
             div.style.width = `${gridWidth/num}px`;
             div.style.height = `${gridWidth/num}px`;
-            div.style.backgroundColor = 'blue';
-            div.style.outline = '5px solid red';
+            div.style.backgroundColor = 'lightgoldenrodyellow';
+            div.style.outline = '5px solid lightblue';
             squareContainer.appendChild(div);  
         }
         squareDiv = document.querySelectorAll('#square');
@@ -28,7 +28,7 @@ window.onload = function () {
 
     function resetSquares() {
         squareDiv.forEach(squareDiv => {
-            squareDiv.style.backgroundColor = 'blue';
+            squareDiv.style.backgroundColor = 'lightgoldenrodyellow';
         });        
     }
 
