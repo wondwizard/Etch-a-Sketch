@@ -5,6 +5,9 @@ const shadeBtn = document.getElementById('shadeBtn');
 const rainbowBtn = document.getElementById('rainbowBtn');
 const gridWidth = 1100;
 
+let rainbow = false;
+let shade = false;
+
 
 //Grid Functions
 function createGrid(num) {
@@ -41,6 +44,7 @@ function newGrid() {
         clearGrid();
         createGrid(input);
         addMouseOver(blackGrid());
+        whiteGridSquare();
     }
 }
 
@@ -75,6 +79,12 @@ function shadeGrid(e) {
     }    
 }
 
+function whiteGrid(e) {
+    return function(e) {
+        e.target.style.backgroundColor = 'rgb(255,255,255)'
+    }
+}
+
 
 //mouseOver
 function addMouseOver(color) {
@@ -83,11 +93,17 @@ function addMouseOver(color) {
 
 }
 
+function whiteGridSquare() {
+    let grid = document.querySelectorAll('#grid')
+    grid.forEach(grid => grid.addEventListener('click', whiteGrid()));    
+}
+
 
 //Function for first load
 function init() {
     createGrid(16);
     addMouseOver(blackGrid());
+    whiteGridSquare();
 }
 
 
@@ -101,14 +117,25 @@ resetBtn.addEventListener('click', function() {
 });
 
 rainbowBtn.addEventListener('click', function() {
-    addMouseOver(rainbowGrid());
+    if (rainbow === false) {
+        rainbow = true;
+        addMouseOver(rainbowGrid());
+    } else {
+        rainbow = false;
+        addMouseOver(blackGrid());
+    }
 });
 
 shadeBtn.addEventListener('click', function() {
-    grid = document.querySelectorAll('#grid');
-    grid.forEach(grid => grid.addEventListener('mouseover', shadeGrid()));
+    if (shade === false) {
+        shade = true;
+        let grid = document.querySelectorAll('#grid');
+        grid.forEach(grid => grid.addEventListener('mouseover', shadeGrid()));        
+    } else {
+        shade = false;
+        addMouseOver(blackGrid());
+    }
 });
-
 
 
 window.addEventListener('load', init());
