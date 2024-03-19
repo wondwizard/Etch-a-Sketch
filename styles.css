@@ -25,13 +25,13 @@ body {
     gap: 10px;
 }
 
-#newGridBtn, #reset {
+#newGridBtn, #resetBtn, #shadeBtn, #rainbowBtn {
     border-radius: 3px;
-    background-color: lightcyan;
+    background-color: lightgoldenrodyellow;
     text-align: center;
     padding: 5px 10px;
 }
 
-#newGridBtn:hover, #reset:hover {
-    background-color: cyan;
+#newGridBtn:hover, #resetBtn:hover, #shadeBtn:hover, #rainbowBtn:hover {
+    background-color: gold;
 }
